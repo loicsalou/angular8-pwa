@@ -12,9 +12,10 @@
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run ganatan:server:production --bundleDependencies all",
+    "build:run": "npm run build:prod && npm run docker:build && npm run docker:run",
     "build:prod": "ng build --prod",
     "docker:build": "cd dist && docker build -t ganatan:latest .",
-    "docker:run": "docker run -p9080:80 -dit --name ganatan ganatan:latest",
+    "docker:run": "docker run -p443:443 -p8080:80 -dit --name ganatan ganatan:latest",
     "docker:cleanup": "docker stop ganatan && docker rm ganatan"
   },
   "private": true,
